@@ -2,6 +2,37 @@
 
 > Shared design system, coding standards, and documentation templates for Electron + React macOS apps.
 
+---
+
+## For AI Agents
+
+**Read these files before writing code:**
+
+| File | When to Read |
+|------|--------------|
+| `STYLEGUIDE.md` | Before writing CSS or designing UI components |
+| `CODING_STANDARDS.md` | Before writing any code |
+| `DOCUMENTATION_STANDARDS.md` | Before creating or updating docs |
+| `templates/CLAUDE.md` | Template for your project's AI context file |
+
+### Key Points
+
+- **Colors**: Use CSS variables (`--bg-primary`, `--text-secondary`, etc.)
+- **Spacing**: 4px base unit
+- **Components**: Functional React only, no TypeScript
+- **IPC**: Use `ipcMain.handle`/`ipcRenderer.invoke` pattern
+- **State**: React Context + useReducer
+
+### Contributing Back
+
+If you discover patterns that should be standardized, push them to this repo:
+
+```bash
+cd docs/standards && git add -A && git commit -m "Add: [pattern]" && git push
+```
+
+---
+
 ## Quick Start
 
 ### Option 1: Clone into your project
@@ -18,9 +49,9 @@ git submodule add git@github.com:avanrossum/design-standards.git docs/standards
 
 ```bash
 # Copy what you need
-curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/STYLEGUIDE.md > STYLEGUIDE.md
-curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/CODING_STANDARDS.md > CODING_STANDARDS.md
-curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/DOCUMENTATION_STANDARDS.md > DOCUMENTATION_STANDARDS.md
+curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/STYLEGUIDE.md > docs/STYLEGUIDE.md
+curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/CODING_STANDARDS.md > docs/CODING_STANDARDS.md
+curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/DOCUMENTATION_STANDARDS.md > docs/DOCUMENTATION_STANDARDS.md
 ```
 
 ---
@@ -92,17 +123,6 @@ git commit -m "chore: Update design standards"
 - **Weekly**: Check if any project-specific patterns should be standardized
 - **Per release**: Review and update docs based on learnings
 - **Quarterly**: Prune outdated patterns, add new ones
-
----
-
-## Contributing
-
-Found something that works well? Push it back:
-
-1. Make the change in this repo
-2. Test that it makes sense across multiple projects
-3. Commit with a clear message
-4. Push to main
 
 ---
 
