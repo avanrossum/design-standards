@@ -1,31 +1,30 @@
 # Design Standards
 
-> Shared design system, coding standards, and documentation templates for Electron + React macOS apps.
+> Shared design systems, coding standards, and documentation templates for macOS applications.
 
 ---
 
 ## For AI Agents
 
-**Read these files before writing code:**
+**Read `SHARED.md` first** - Universal principles across all frameworks.
 
-| File | When to Read |
-|------|--------------|
-| `STYLEGUIDE.md` | Before writing CSS or designing UI components |
-| `CODING_STANDARDS.md` | Before writing any code |
-| `DOCUMENTATION_STANDARDS.md` | Before creating or updating docs |
-| `templates/CLAUDE.md` | Template for your project's AI context file |
+Then read the framework-specific guides:
 
-### Key Points
+| Framework | Files to Read |
+|-----------|---------------|
+| **Electron + React** | `electron/STYLEGUIDE.md`, `electron/CODING_STANDARDS.md` |
+| **Swift + SwiftUI** | `swift-macos/STYLEGUIDE.md`, `swift-macos/CODING_STANDARDS.md` |
 
-- **Colors**: Use CSS variables (`--bg-primary`, `--text-secondary`, etc.)
-- **Spacing**: 4px base unit
-- **Components**: Functional React only, no TypeScript
-- **IPC**: Use `ipcMain.handle`/`ipcRenderer.invoke` pattern
-- **State**: React Context + useReducer
+### Key Points (All Frameworks)
+
+- **Theme adaptability** - Support light and dark modes as first-class citizens
+- **Native feel** - Match platform conventions
+- **State sync** - Refresh UI after data mutations
+- **Error handling** - Every external operation can fail
 
 ### Contributing Back
 
-If you discover patterns that should be standardized, push them to this repo:
+If you discover patterns worth standardizing:
 
 ```bash
 cd docs/standards && git add -A && git commit -m "Add: [pattern]" && git push
@@ -33,58 +32,118 @@ cd docs/standards && git add -A && git commit -m "Add: [pattern]" && git push
 
 ---
 
+## Repository Structure
+
+```
+design-standards/
+├── SHARED.md                  # Universal principles (READ FIRST)
+├── README.md                  # This file
+│
+├── electron/                  # Electron + React (JavaScript)
+│   ├── CODING_STANDARDS.md    # Code conventions, patterns
+│   ├── STYLEGUIDE.md          # Visual design, CSS, components
+│   ├── DOCUMENTATION_STANDARDS.md
+│   └── templates/             # Starter doc templates
+│       ├── ARCHITECTURE.md
+│       ├── CLAUDE.md
+│       ├── ROADMAP.md
+│       └── CHANGELOG.md
+│
+└── swift-macos/               # Native Swift + SwiftUI
+    ├── CODING_STANDARDS.md    # Swift conventions, patterns
+    ├── STYLEGUIDE.md          # SwiftUI design, components
+    ├── DOCUMENTATION_STANDARDS.md
+    └── templates/             # Starter doc templates
+        ├── ARCHITECTURE.md
+        ├── CLAUDE.md
+        ├── ROADMAP.md
+        └── CHANGELOG.md
+```
+
+---
+
 ## Quick Start
 
-### Option 1: Clone into your project
+### Option 1: Clone as Submodule (Recommended)
 
 ```bash
 # From your project root
-git clone git@github.com:avanrossum/design-standards.git docs/standards
-
-# Or as a submodule (recommended for versioning)
 git submodule add git@github.com:avanrossum/design-standards.git docs/standards
 ```
 
-### Option 2: Copy individual files
+### Option 2: Clone Directly
 
 ```bash
-# Copy what you need
-curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/STYLEGUIDE.md > docs/STYLEGUIDE.md
-curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/CODING_STANDARDS.md > docs/CODING_STANDARDS.md
-curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/DOCUMENTATION_STANDARDS.md > docs/DOCUMENTATION_STANDARDS.md
+git clone git@github.com:avanrossum/design-standards.git docs/standards
+```
+
+### Option 3: Copy Individual Files
+
+```bash
+# For Electron project
+curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/electron/STYLEGUIDE.md > docs/STYLEGUIDE.md
+curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/electron/CODING_STANDARDS.md > docs/CODING_STANDARDS.md
+
+# For Swift project
+curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/swift-macos/STYLEGUIDE.md > docs/STYLEGUIDE.md
+curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/swift-macos/CODING_STANDARDS.md > docs/CODING_STANDARDS.md
 ```
 
 ---
 
 ## What's Included
 
+### Per Framework
+
 | File | Purpose |
 |------|---------|
-| `STYLEGUIDE.md` | Visual design system - colors, typography, spacing, components, animations |
-| `CODING_STANDARDS.md` | Code conventions - JS/React patterns, naming, file organization |
-| `DOCUMENTATION_STANDARDS.md` | Doc templates - CLAUDE.md, ARCHITECTURE.md, ROADMAP.md, CHANGELOG.md |
-| `templates/` | Starter templates for common docs |
+| `CODING_STANDARDS.md` | Language conventions, patterns, file organization |
+| `STYLEGUIDE.md` | Visual design - colors, typography, spacing, components |
+| `DOCUMENTATION_STANDARDS.md` | How to document your project |
+| `templates/` | Starter templates for CLAUDE.md, ARCHITECTURE.md, etc. |
+
+### Shared
+
+| File | Purpose |
+|------|---------|
+| `SHARED.md` | Universal principles across all frameworks |
+
+---
+
+## Framework Quick Reference
+
+### Electron + React
+
+- **Language**: JavaScript (no TypeScript)
+- **UI**: React 18+ functional components
+- **State**: Context + useReducer
+- **Styling**: CSS variables for theming
+- **IPC**: `ipcMain.handle` / `ipcRenderer.invoke`
+
+### Swift + SwiftUI
+
+- **Language**: Swift 5.9+
+- **UI**: SwiftUI (AppKit fallback)
+- **State**: @Observable / ObservableObject
+- **Styling**: System colors, SF Symbols
+- **Concurrency**: async/await, actors
 
 ---
 
 ## Keeping Standards in Sync
 
-**This is a living document.** As you work on projects, you'll discover new patterns, gotchas, and improvements. Push them back here so all projects benefit.
-
 ### Pushing Updates
 
-When you discover something that should be standardized:
+When you discover patterns worth standardizing:
 
 ```bash
-cd docs/standards  # or wherever you cloned it
+cd docs/standards
 git add -A
-git commit -m "Add: [what you learned]"
+git commit -m "Add: [description]"
 git push origin main
 ```
 
 ### Pulling Updates
-
-Regularly sync to get improvements from other projects:
 
 ```bash
 cd docs/standards
@@ -94,46 +153,38 @@ git pull origin main
 ### For Submodules
 
 ```bash
-# Pull latest standards
+# Pull latest
 git submodule update --remote docs/standards
 
-# Commit the update to your project
+# Commit the update
 git add docs/standards
 git commit -m "chore: Update design standards"
 ```
 
 ---
 
-## Workflow
+## Adding a New Framework
 
-### Starting a New Project
+1. Create directory: `framework-name/`
+2. Adapt the three core docs:
+   - `CODING_STANDARDS.md`
+   - `STYLEGUIDE.md`
+   - `DOCUMENTATION_STANDARDS.md`
+3. Create `templates/` with starter files
+4. Update `SHARED.md` structure section
+5. Update this README
 
-1. Clone/copy the standards into your project
-2. Copy templates for your doc files (CLAUDE.md, etc.)
-3. Customize for your specific project
-
-### During Development
-
-1. **Follow the standards** - They exist for consistency
-2. **Note exceptions** - If something doesn't fit, document why
-3. **Contribute back** - Found a better pattern? Push it upstream
-
-### Periodic Review
-
-- **Weekly**: Check if any project-specific patterns should be standardized
-- **Per release**: Review and update docs based on learnings
-- **Quarterly**: Prune outdated patterns, add new ones
+See `SHARED.md` for detailed adaptation guidelines.
 
 ---
 
-## Project Origins
+## Origins
 
 Originally extracted from the [Actions](https://github.com/avanrossum/actions) macOS menu-bar app. Designed for:
 
-- Electron 28+ applications
-- React 18+ (functional components)
 - macOS-native aesthetic
 - AI-assisted development (Claude Code)
+- Consistent quality across projects
 
 ---
 
