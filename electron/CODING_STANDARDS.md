@@ -592,6 +592,8 @@ spawn('node', [scriptPath]);
 
 ## Testing Patterns
 
+**Tests are required for all new logic.** Any new pure function, data transformation, or business logic must have corresponding tests before it ships. Extract testable logic from components into shared modules (see TESTING_STANDARDS.md for the full methodology).
+
 ### File Naming
 
 ```
