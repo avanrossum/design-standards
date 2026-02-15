@@ -298,6 +298,109 @@ Small muted text with optional links, placed below inputs to guide the user.
 
 ---
 
+## Modal Tab Layouts
+
+Modal windows with multiple tabs should follow these layout patterns based on tab count:
+
+### Threshold Rule
+
+| Tab Count | Pattern |
+|-----------|---------|
+| **≤4 tabs** | Horizontal text tabs with underline indicator |
+| **>4 tabs** | Top icon bar with icons + labels (macOS System Preferences style) |
+
+### Text Tab Bar (≤4 tabs)
+
+Simple horizontal text-only tabs. Best for focused modals with limited concerns.
+
+```css
+.modal-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 12px;
+}
+
+.modal-tab {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  margin-bottom: -1px;
+}
+
+.modal-tab:hover {
+  color: var(--text-primary);
+}
+
+.modal-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+```
+
+### Top Icon Bar (>4 tabs)
+
+Centered icon + label buttons with highlight background on active. Inspired by macOS System Preferences.
+
+```css
+.modal-top-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-surface);
+}
+
+.modal-tab-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.15s ease;
+  min-width: 64px;
+}
+
+.modal-tab-icon:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.modal-tab-icon.active {
+  background: var(--highlight-bg);
+  color: var(--accent);
+}
+
+.modal-tab-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.modal-tab-icon span {
+  font-size: 10px;
+  font-weight: 500;
+}
+```
+
+### Icon Guidelines
+
+- Use stroke-based icons at 24x24 with `strokeWidth: 1.5`
+- Icons should be simple, recognizable, and consistent across tabs
+- Import SVG paths as React components for easy color inheritance via `currentColor`
+
+---
+
 ## Shared Patterns
 
 Both archetypes share the full design system from STYLEGUIDE.md:
