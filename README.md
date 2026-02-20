@@ -15,6 +15,8 @@ Then read the framework-specific guides:
 | **Electron + React** | `electron/STYLEGUIDE.md`, `electron/CODING_STANDARDS.md` |
 | **Swift + SwiftUI** | `swift-macos/STYLEGUIDE.md`, `swift-macos/CODING_STANDARDS.md` |
 
+**For projects with visual output**, also read `self-preview/SELF_PREVIEW.md` — a feedback loop pattern for AI agents that produce visual artifacts.
+
 ### Key Points (All Frameworks)
 
 - **Theme adaptability** - Support light and dark modes as first-class citizens
@@ -49,15 +51,20 @@ design-standards/
 │       ├── ROADMAP.md
 │       └── CHANGELOG.md
 │
-└── swift-macos/               # Native Swift + SwiftUI
-    ├── CODING_STANDARDS.md    # Swift conventions, patterns
-    ├── STYLEGUIDE.md          # SwiftUI design, components
-    ├── DOCUMENTATION_STANDARDS.md
-    └── templates/             # Starter doc templates
-        ├── ARCHITECTURE.md
-        ├── CLAUDE.md
-        ├── ROADMAP.md
-        └── CHANGELOG.md
+├── swift-macos/               # Native Swift + SwiftUI
+│   ├── CODING_STANDARDS.md    # Swift conventions, patterns
+│   ├── STYLEGUIDE.md          # SwiftUI design, components
+│   ├── DOCUMENTATION_STANDARDS.md
+│   └── templates/             # Starter doc templates
+│       ├── ARCHITECTURE.md
+│       ├── CLAUDE.md
+│       ├── ROADMAP.md
+│       └── CHANGELOG.md
+│
+└── self-preview/              # AI Agent Visual Feedback Pattern
+    ├── SELF_PREVIEW.md        # Pattern docs — when, why, how
+    ├── self_preview.py        # Reference implementation (Pillow)
+    └── CLAUDE_SNIPPET.md      # Ready-to-paste CLAUDE.md section
 ```
 
 ---
@@ -107,6 +114,12 @@ curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/swif
 | File | Purpose |
 |------|---------|
 | `SHARED.md` | Universal principles across all frameworks |
+
+### Cross-Cutting Patterns
+
+| Directory | Purpose |
+|-----------|---------|
+| `self-preview/` | Visual feedback loop for AI agents producing visual artifacts (fonts, UIs, charts, etc.) |
 
 ---
 

@@ -19,11 +19,16 @@ design-standards/
 │   ├── DOCUMENTATION_STANDARDS.md
 │   └── templates/
 │
-└── swift-macos/           # Native Swift + SwiftUI
-    ├── CODING_STANDARDS.md
-    ├── STYLEGUIDE.md
-    ├── DOCUMENTATION_STANDARDS.md
-    └── templates/
+├── swift-macos/           # Native Swift + SwiftUI
+│   ├── CODING_STANDARDS.md
+│   ├── STYLEGUIDE.md
+│   ├── DOCUMENTATION_STANDARDS.md
+│   └── templates/
+│
+└── self-preview/          # AI Agent Visual Feedback Pattern
+    ├── SELF_PREVIEW.md
+    ├── self_preview.py
+    └── CLAUDE_SNIPPET.md
 ```
 
 ### Using in Your Project
