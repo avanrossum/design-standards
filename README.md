@@ -7,6 +7,7 @@
 ## For AI Agents
 
 **Read `SHARED.md` first** - Universal principles across all frameworks.
+**Then read `CODING_STANDARDS.md`** - Universal coding standards (DRY, separation of concerns, security, testing).
 
 Then read the framework-specific guides:
 
@@ -39,6 +40,7 @@ cd docs/standards && git add -A && git commit -m "Add: [pattern]" && git push
 ```
 design-standards/
 ├── SHARED.md                  # Universal principles (READ FIRST)
+├── CODING_STANDARDS.md        # Universal coding standards (DRY, security, testing)
 ├── README.md                  # This file
 │
 ├── electron/                  # Electron + React (JavaScript)
@@ -113,7 +115,8 @@ curl -sL https://raw.githubusercontent.com/avanrossum/design-standards/main/swif
 
 | File | Purpose |
 |------|---------|
-| `SHARED.md` | Universal principles across all frameworks |
+| `SHARED.md` | Universal design principles, documentation standards, git conventions |
+| `CODING_STANDARDS.md` | Universal coding standards — DRY, separation of concerns, security, testing |
 
 ### Cross-Cutting Patterns
 

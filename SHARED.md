@@ -11,6 +11,7 @@ This repository contains design standards, coding conventions, and documentation
 ```
 design-standards/
 ├── SHARED.md              # You are here - universal principles
+├── CODING_STANDARDS.md    # Universal coding standards (DRY, security, testing)
 ├── README.md              # Quick start and navigation
 │
 ├── electron/              # Electron + React (JavaScript)
